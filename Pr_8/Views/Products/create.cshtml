@@ -1,0 +1,44 @@
+﻿@model Pr_8.Models.Product
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Product</title>
+</head>
+<body>
+    <h2>Add New Product</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <p>
+            Product Name<br />
+            @Html.TextBoxFor(m => m.ProductName)
+            @Html.ValidationMessageFor(m => m.ProductName)
+        </p>
+
+        <p>
+            Quantity<br />
+            @Html.TextBoxFor(
+                     m => m.Quantity,
+                     new { type = "number", min = "0" })
+            @Html.ValidationMessageFor(m => m.Quantity)
+        </p>
+
+        <p>
+            Price<br />
+            @Html.TextBoxFor(
+                     m => m.Price,
+                     new { type = "number", min = "0", step = "0.01" })
+            @Html.ValidationMessageFor(m => m.Price)
+        </p>
+
+        <button type="submit">Save Product</button>
+    }
+
+    <p>
+        @Html.ActionLink("Back to Inventory", "Index")
+    </p>
+</body>
+</html>

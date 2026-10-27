@@ -1,0 +1,30 @@
+﻿@model Pr_8.Models.Product
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Product</title>
+</head>
+<body>
+    <h2>Delete Product</h2>
+
+    <p>Are you sure you want to delete this product?</p>
+
+    <p>Product ID: @Model.ProductId</p>
+    <p>Product Name: @Model.ProductName</p>
+    <p>Quantity: @Model.Quantity</p>
+    <p>Price: @Model.Price</p>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("id", Model.ProductId)
+
+        <button type="submit">Confirm Delete</button>
+    }
+
+    <p>
+        @Html.ActionLink("Cancel", "Index")
+    </p>
+</body>
+</html>
